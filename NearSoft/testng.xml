@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Main Test Suite" verbose="5"  parallel="none" thread-count="1">
+  
+ <test name="CCPA-Chrome" parallel="classes" thread-count="1">
+    <parameter name="osname" value="Windows" />
+    <parameter name="Environment" value="QA" /> 
+    <parameter name="BrowserType" value="Chrome" />
+    <parameter name="NodeURL" value="https://3.229.165.41/ccpaui/#/publisher/consumer-request" />
+    <parameter name="platformVersion" value="65.0" />
+     <parameter name="portNumber" value="4444" />
+    <classes>
+      <class name="main.CucumberRunner"/>
+    </classes>
+  </test>  
+  
+  
+  
+</suite>

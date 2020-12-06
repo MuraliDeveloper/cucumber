@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Auto1Suite]">
+  <listeners>
+    <listener class-name="reportListner.ExtentReporterNG"/>
+  </listeners>
+  <test thread-count="5" name="Auto1Test(failed)">
+    <classes>
+      <class name="testCases.Test_Manufacturer">
+        <methods>
+          <include name="testManufacturer_With_extraParameter"/>
+          <include name="testManufacturer_With_invalidParameterName_locale"/>
+          <include name="testManufacturer_With_invalidParameterValue_locale"/>
+        </methods>
+      </class> <!-- testCases.Test_Manufacturer -->
+      <class name="testCases.Test_BuiltDates">
+        <methods>
+          <include name="testBuiltDates_for_pageValues"/>
+          <include name="testBuiltDates_With_invalidParameterName_locale"/>
+          <include name="testBuiltDates_With_invalidParameterValue_locale"/>
+          <include name="testBuiltDates_With_extraParameter"/>
+        </methods>
+      </class> <!-- testCases.Test_BuiltDates -->
+      <class name="testCases.Test_MainTypes">
+        <methods>
+          <include name="testMainTypes_With_extraParameter"/>
+          <include name="testMainTypes_With_invalidParameterName_locale"/>
+          <include name="testMainTypes_With_invalidParameterValue_locale"/>
+        </methods>
+      </class> <!-- testCases.Test_MainTypes -->
+    </classes>
+  </test> <!-- Auto1Test(failed) -->
+</suite> <!-- Failed suite [Auto1Suite] -->

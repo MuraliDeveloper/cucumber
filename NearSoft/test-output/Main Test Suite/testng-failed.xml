@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="1" guice-stage="DEVELOPMENT" verbose="5" name="Failed suite [Main Test Suite]">
+  <test thread-count="1" verbose="5" name="CCPA-Chrom1(failed)">
+    <parameter name="BrowserType" value="Chrome"/>
+    <parameter name="platformVersion" value="65.0"/>
+    <parameter name="Environment" value="QA"/>
+    <parameter name="NodeURL" value="https://3.229.165.41/ccpaui/#/publisher/consumer-request"/>
+    <parameter name="osname" value="Windows"/>
+    <parameter name="portNumber" value="4444"/>
+    <classes>
+      <class name="stepdefinition.CCPAPageTest">
+        <methods>
+          <include name="CCPAPageTitleTest"/>
+          <include name="destroyLocalDriver"/>
+          <include name="setUpClass"/>
+          <include name="configureDriverPath"/>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="entervalues"/>
+          <include name="formenter"/>
+          <include name="postCondition"/>
+          <include name="teardown"/>
+          <include name="tearDownClass"/>
+          <include name="writeExtentReport"/>
+        </methods>
+      </class> <!-- stepdefinition.CCPAPageTest -->
+    </classes>
+  </test> <!-- CCPA-Chrom1(failed) -->
+</suite> <!-- Failed suite [Main Test Suite] -->

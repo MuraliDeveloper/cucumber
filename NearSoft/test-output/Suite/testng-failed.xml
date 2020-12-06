@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
+  <listeners>
+    <listener class-name="reportListner.ExtentReporterNG"/>
+  </listeners>
+  <test thread-count="5" name="Auto1Test(failed)">
+    <classes>
+      <class name="testCases.TestModels_040">
+        <methods>
+          <include name="verifyResponseCode_Model_invalid_localeValue_404"/>
+          <include name="verifyResponseCode_Model_invalidParameter_locals_404"/>
+        </methods>
+      </class> <!-- testCases.TestModels_040 -->
+    </classes>
+  </test> <!-- Auto1Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->

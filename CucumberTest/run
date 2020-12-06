@@ -1,0 +1,15 @@
+1.feature file
+2.Step definition file
+3.test runner
+
+
+
+feature contains all features of application:
+
+
+In eclipse add cucumber plugin:
+------------------------------
+1.search cucumber in eclipse market place
+and install cucumber + natural
+
+

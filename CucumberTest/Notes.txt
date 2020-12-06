@@ -1,0 +1,278 @@
+predefined frameworks:
+-------------------------
+Junit -TDD
+testng -TDD
+cucmber -BDD
+
+user defined frameworks:
+-------------------------
+data driven
+keyword driven
+hybrid
+
+
+
+Selenium+ TestNG:
+----------------------------
+- test the applciation  using the TEST Driven Development (TDD) approach.
+- Develop the app and then start writing the test cases.
+
+
+
+
+
+Cucumber:
+---------------
+- is a framework
+- test the applciation  using the Behavior Driven Development (BDD) approach.
+- define/write the test cases  1st and run - the fatures fails 
+now developer needs to fix the feature.
+
+1. dev/test/busines writes the test cases in step definition file ,
+[ step definition file contains test cases writen in eng lang .i.e.Gherkin lang]
+
+2.cucumber executes the test cases based on the step definition file.
+
+
+
+
+
+steps:
+------
+1.create a maven project
+2. add dependencies in pom.xml for 
+- cucumber ( test engine for running the test cases )
+- selenium ( interaxn between web pages and java)
+- Junit
+3. add/install cucumber plugin in eclipse
+4. provide the test def files/features files -> anyone
+and provide the code for every step  -> dev/tester
+5. run the feature file
+
+
+Feature keywords:
+------------------
+Feature
+Background
+Scenario
+Given
+When
+Then
+And
+But
+
+
+
+A simple feature file consists of the following keywords/parts −
+Feature − Name of the feature under test.
+Description (optional) − Describe about feature under test.
+Scenario − What is the test scenario.
+Given − Prerequisite before the test steps get executed.
+When − Specific condition which should match in order to execute the next step.
+Then − What should happen if the condition mentioned in WHEN is satisfied.
+
+
+
+Annotation is a predefined text, which holds a specific meaning. 
+It lets the compiler/interpreter know, what should be done upon execution. 
+Cucumber has got the following few annotations −
+
+
+
+Given −
+It describes the pre-requisite for the test to be executed.
+Example − GIVEN I am a Facebook user
+When −
+It defines the trigger point for any test scenario execution.
+
+Example − WHEN I enter "<username>"
+
+Then −
+Then holds the expected result for the test to be executed.
+Example − THEN login should be successful.
+
+
+And −
+It provides the logical AND condition between any two statements. 
+AND can be used in conjunction with GIVEN, WHEN and THEN statement.
+Example − WHEN I enter my "<username>" AND I enter my "<password>"
+
+
+But −
+It signifies logical OR condition between any two statements. 
+OR can be used in conjunction with GIVEN, WHEN and THEN statement.
+Example − THEN login should be successful. BUT home page should not be missing.
+
+
+Scenario −
+Details about the scenario under the test needs to be captured after the keyword “Scenario:”
+
+Ex1:
+Scenario:
+GIVEN I am a Facebook user
+WHEN I enter my un
+AND I enter my pwd
+THEN login should be successful.
+BUT home page should not be missing.
+
+Ex2:
+Scenario:
+GIVEN -I open empdemo app as user
+WHEN - I enter un   
+AND  - i enter pass
+THEN - login should be successful
+BUT  - "Add New Employww" link is missing
+
+
+Ex3:
+Scenario:
+Given user navigates to Facebook
+When I enter correct username and password
+Then login should be successful
+
+Ex4:
+Scenario:
+Given user navigates to Facebook
+When I enter correct email address and password
+Then login should be successful
+
+Ex5:
+Scenario:
+Given user navigates to Facebook
+When I enter correct phone number and password
+Then login should be successful
+
+
+
+example:
+----------------------------------------------
+Feature − Scenario Outline
+Scenario Outline − Login functionality for a social networking site.
+Given user navigates to Facebook
+When I enter Username as "<username>" and Password as "<password>"
+Then login should be unsuccessful
+
+
+import org.openqa.selenium.By; 
+import org.openqa.selenium.WebDriver; 
+import org.openqa.selenium.firefox.FirefoxDriver; 
+
+import cucumber.annotation.en.Given; 
+import cucumber.annotation.en.Then; 
+import cucumber.annotation.en.When; 
+
+public class stepdefinition { 
+   WebDriver driver = null; 
+	
+   @Given("^user navigates to facebook$") 
+   public void goToFacebook() { 
+      driver = new FirefoxDriver(); 
+      driver.navigate().to("https://www.facebook.com/"); 
+   } 
+	
+   @When("^I enter Username as \"([^\"]*)\" and Password as \"([^\"]*)\"$") 
+   public void I_enter_Username_as_and_Password_as(String arg1, String arg2) {
+      driver.findElement(By.id("email")).sendKeys(arg1);
+      driver.findElement(By.id("pass")).sendKeys(arg2);
+      driver.findElement(By.id("u_0_v")).click(); 
+   } 
+	
+   @Then("^login should be unsuccessful$") 
+   public void validateRelogin() { 
+      if(driver.getCurrentUrl().equalsIgnoreCase(
+      "https://www.facebook.com/login.php?login_attempt=1&lwv=110")){
+         System.out.println("Test Pass"); 
+      } else { 
+         System.out.println("Test Failed"); 
+      } 
+      driver.close(); 
+   }    
+}
+
+
+
+
+
+
+Feature: Login Action
+Scenario: Successful Login with Valid Credentials
+ Given User is on Home Page
+ When User Navigate to LogIn Page
+ And User enters "testuser_1" and "Test@123"
+ Then Message displayed Login Successfully
+ 
+ 
+  @When("^User enters \"(.*)\" and \"(.*)\"$")
+ public void user_enters_UserName_and_Password(String username, String password) throws Throwable {
+ driver.findElement(By.id("log")).sendKeys(username); 
+     driver.findElement(By.id("pwd")).sendKeys(password);
+     driver.findElement(By.id("login")).click();
+ }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Scenario Outline: Successful Login with Valid Credentials
+ Given User is on Home Page
+ When User Navigate to LogIn Page
+ And User enters "<username>" and "<password>"
+ Then Message displayed Login Successfully
+Examples:
+    | admin   | admin1 |
+    | testuser_1 | Test@153 |
+    | testuser_2 | Test@153 |
+    
+    
+import java.util.concurrent.TimeUnit;
+ 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+ 
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+ 
+public class Test_Steps {
+ public static WebDriver driver;
+ @Given("^User is on Home Page$")
+ public void user_is_on_Home_Page() throws Throwable {
+ driver = new FirefoxDriver();
+     driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+     driver.get("https://www.store.demoqa.com");
+ }
+ 
+ @When("^User Navigate to LogIn Page$")
+ public void user_Navigate_to_LogIn_Page() throws Throwable {
+ driver.findElement(By.xpath(".//*[@id='account']/a")).click();
+ }
+ 
+ @When("^User enters \"(.*)\" and \"(.*)\"$")
+ public void user_enters_UserName_and_Password(String username, String password) throws Throwable {
+ driver.findElement(By.id("log")).sendKeys(username); 
+     driver.findElement(By.id("pwd")).sendKeys(password);
+     //driver.findElement(By.id("login")).click();
+ }
+ 
+ @Then("^Message displayed Login Successfully$")
+ public void message_displayed_Login_Successfully() throws Throwable {
+ System.out.println("Login Successfully");
+ }
+ 
+ @When("^User LogOut from the Application$")
+ public void user_LogOut_from_the_Application() throws Throwable {
+ driver.findElement (By.xpath(".//*[@id='account_logout']/a")).click();
+ }
+ 
+ @Then("^Message displayed LogOut Successfully$")
+ public void message_displayed_LogOut_Successfully() throws Throwable {
+ System.out.println("LogOut Successfully");
+ }
+ 
+}    
