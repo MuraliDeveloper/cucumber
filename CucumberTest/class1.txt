@@ -1,0 +1,168 @@
+
+In TDD, I don’t care much about the output. The only thing needed is to carry out the test in a particular way.
+But in BDD, I don’t mind how you come up with the output, only that the output has to be correct under the GIVEN condition.
+
+Process Of TDD:
+---------------------
+TDD methodology follows a very simple 6 step process:
+
+1) Write a test case: Based on the requirements, write an automated test case.
+
+2) Run all the test cases: Run these automated test cases on the currently developed code.
+
+3) Develop the code for that test cases: If the test case fails, then, write the code to make that test-case work as expected.
+
+4) Run test cases again: Run the test cases again and check if all the test cases developed so far are implemented.
+
+5) Refactor your code: This is an optional step. However, it's important to refactor your code to make it more readable and reusable.
+
+6) Repeat the steps 1- 5 for new test cases: Repeat the cycle for the other test cases until all the test cases are implemented.
+
+
+Process Of BDD:
+-----------------------
+BDD stands for Behavior Driven Development. BDD is an extension to TDD where instead of writing the test cases, we start by writing a behavior. Later, we develop the code which is required for our application to perform the behavior.
+-identifying sceanrio coverag eis complex in existomg frameworks.
+- exposing the scenarios is easy with VDD
+- if the behaviour is chnaged its easy to identify which test case to alter.
+- behavious can be written by product owner .
+- for every behaviour one method
+- selenium : scenario coverage wqe have to loomat dif places:
+- cucumber: sceanrio coberage look for one place.
+Bdd : process
+cucumber: tool 
+- cucumber is a flovour on top of selenium for scenario coverage.
+
+
+
+The process involved in BDD methodology also consists of 6 steps and is very similar to that of TDD.
+
+1) Write the behavior of the application: The behavior of an application is written in simple English like language by the product owner or the business analysts or QAs.
+
+2) Write the automated scripts: This simple English like language is then converted into programming tests.
+
+3) Implement the functional code: The functional code underlying the behavior is then implemented.
+
+4) Check if the behavior is successful: Run the behavior and see if it is successful. If successful, move to the next behavior otherwise fix the errors in the functional code to achieve the application behavior.
+
+5) Refactor or organize code: Refactor or organize your code to make it more readable and re-usable.
+
+6) Repeat the steps 1-5 for new behavior: Repeat the 
+
+steps to implement more behaviors in your application.
+BDD:
+----
+-Behaviour driven development
+-similar to TDD
+-Here we wil start writing the behaviour instead of test cases
+-analyst/stackholders cannot understand the Test cases and cannot understand the behaviour
+but we if write the behaviour its easy to understand
+-non-techinical people can understand the behaviour/flow of app easily using BDD
+-HERE WE WRITE BEHAVIOUR DRIVEN files.
+-behaviour can be changed anytime without changing code
+-BDD explains the behaviour of application in simple english using Gherkin languge.
+-BDD, whatever you write must go into Given-When-Then steps. 
+
+Cucumber:
+--------------
+automation testing framework
+additionaonla junits, we cna use cucumber
+- supports java, pythin , csharp, groovy
+-Opensource
+
+
+
+cucumber supports different software platforms:
+------------------------------
+Ruby on Rails
+Selenium
+PicoContainer
+Spring Framework
+Watir
+
+
+
+Feature:
+----------
+Scenario:
+
+Given - open browser and url
+When  - enter un + pwd
+Then  - check login success (assertions) 
+
+In BDD, users (business analysts, product owners) first write scenarios or acceptance tests that describes the behavior of the system from the customer's perspective, for review and sign-off by the product owners before developers write their codes.
+
+Cucumber use Ruby programming language.
+
+Advantages of Cucumber:
+------------------------------
+It is helpful to involve business stakeholders who can't easily read code
+Cucumber Testing focuses on end-user experience
+Style of writing tests allow for easier reuse of code in the tests
+Quick and easy set up and execution
+Efficient tool for testing
+
+
+What is "Feature File"?
+----------------------------------
+Features file contain high level description of the Test Scenario in simple language. It is known as Gherkin. Gherkin is a plain English text language
+
+Feature File consist of following components -
+
+Feature: A feature would describe the current test script which has to be executed.
+Scenario: Scenario describes the steps and expected outcome for a particular test case.
+Scenario Outline: Same scenario can be executed for multiple sets of data using scenario outline. The data is provided by a tabular structure separated by (I I).
+Given: It specifies the context of the text to be executed. By using datatables "Given", step can also be parameterized.
+When: "When" specifies the test action that has to performed
+Then: The expected outcome of the test can be represented by "Then"
+
+
+sample:
+Feature: Visit career guide page in career.guru99.com
+Scenario: Visit career.guru99.com
+Given: I am on career.guru99.com
+When: I click on career guide menu
+Then: I should see career guide page
+
+Scenario: Login check
+Given I am on the login page 
+When I enter "username" username
+And I enter "Password" password
+And I click on the "Login" button
+Then I am able to login successfully.
+
+
+What is Gherkin?
+----------------------
+Gherkin is the format for cucumber specifications. It is a domain specific language which helps you to describe business behavior without the need to go into detail of implementation. This text acts as documentation and skeleton of your automated tests. Gherkin is based on TreeTop Grammar which exists in 37+ languages. Therefore you can write your gherkin in 37+ spoken languages.
+
+This script serves two primary purposes:
+
+Documents user scenarios
+Writing an automated test (BDD)
+
+
+syntax:
+Feature: Title of the Scenario
+Given [Preconditions or Initial Context]
+When [Event or Trigger]
+Then [Expected output]
+
+
+Feature:  
+
+Login functionality of social networking site Facebook. 
+Given:  I am a facebook user. 
+When: I enter username as username. 
+And I enter the password as the password 
+Then I should be redirected to the home page of facebook 
+
+Feature: User Authentication Background:
+Given the user is already registered to the website Scenario:
+Given the user is on the login page
+When the user inputs the correct email address
+And the user inputs the correct password
+And the user clicks the Login button
+Then the user should be authenticated
+And the user should be redirected to their dashboard
+And the user should be presented with a success message 
